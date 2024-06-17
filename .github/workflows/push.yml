@@ -25,5 +25,11 @@ jobs:
         with:
           token: ${{ secrets.REPLICATE_API_TOKEN }}
 
+      - name: Congifigure Docker buildx
+        run: |
+          docker buildx ls
+          docker buildx inspect
+          docker buildx use default
+
       - name: Push to Replicate
         run: cog push r8.im/zeke/sd3
