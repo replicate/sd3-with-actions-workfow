@@ -21,19 +21,9 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Setup Cog
-        uses: replicate/setup-cog@e32d261202c6a889366ad06f0cfff72fd825e7c5
+        uses: replicate/setup-cog@0b80adb018e90cd503e58e5d941301d9cc038ed9
         with:
           token: ${{ secrets.REPLICATE_API_TOKEN }}
-
-      - name: Build Cog from source
-        uses: replicate/build-cog@main
-        with:
-          commitish: "2cb62923920d773d290acbb38bbea9d98b40fb04"
-
-      - name: Echo Cog version (default or built?)
-        run: |
-          set -x
-          cog --version
 
       - name: Push to Replicate
         run: cog push r8.im/zeke/sd3
